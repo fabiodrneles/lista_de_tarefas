@@ -10,11 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import androidx.core.content.contentValuesOf
 import androidx.navigation.NavController
 import com.fabiodrneles.listadetarefascompose.ui.theme.BLACK
 import com.fabiodrneles.listadetarefascompose.ui.theme.Purple700
-import com.fabiodrneles.listadetarefascompose.ui.theme.WHITE
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
