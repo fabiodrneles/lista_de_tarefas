@@ -1,5 +1,6 @@
 package com.fabiodrneles.listadetarefascompose.view
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
@@ -7,5 +8,6 @@ import androidx.navigation.NavController
 fun ListaTarefas(
     navController: NavController
 ){
+    Text(text = "listaTarefa")
 
 }
