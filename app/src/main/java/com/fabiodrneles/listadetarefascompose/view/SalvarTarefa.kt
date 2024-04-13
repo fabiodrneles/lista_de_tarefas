@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
@@ -85,6 +86,10 @@ fun SalvarTarefa(
             mutableStateOf("")
         }
 
+        var descricaoTarefa by remember {
+            mutableStateOf("")
+        }
+
 
         Box (
             modifier = Modifier
@@ -107,6 +112,19 @@ fun SalvarTarefa(
                         .fillMaxWidth()
                         .padding(20.dp, 20.dp, 20.dp, 0.dp),
                     label = "Titulo Tarefa",
+                    maxLines = 1,
+                    keyboardType = KeyboardType.Text
+                )
+
+                CaixaDeTexto(
+                    value = descricaoTarefa,
+                    onValueChange = {
+                        descricaoTarefa = it
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth().height(150.dp)
+                        .padding(20.dp, 20.dp, 20.dp, 0.dp),
+                    label = "Descrição",
                     maxLines = 1,
                     keyboardType = KeyboardType.Text
                 )
