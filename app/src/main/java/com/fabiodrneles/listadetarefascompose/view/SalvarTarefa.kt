@@ -125,7 +125,7 @@ fun SalvarTarefa(
                         .fillMaxWidth().height(150.dp)
                         .padding(20.dp, 20.dp, 20.dp, 0.dp),
                     label = "Descrição",
-                    maxLines = 1,
+                    maxLines = 5,
                     keyboardType = KeyboardType.Text
                 )
 
