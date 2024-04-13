@@ -14,6 +14,10 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 val WHITE = Color(0xFFFFFFFF)
 val BLACK = Color(0xFF000000)
+val LIGHT_BLUE = Color(0xFF03A9F4)
+
+//cor para testes
+val ORANGE = Color(0xFFF42F03)
 
 
 
