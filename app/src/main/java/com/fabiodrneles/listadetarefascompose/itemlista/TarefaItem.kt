@@ -17,11 +17,54 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.fabiodrneles.listadetarefascompose.R
+import com.fabiodrneles.listadetarefascompose.model.Tarefa
+import com.fabiodrneles.listadetarefascompose.ui.theme.RADIO_BUTTON_GREEN_SELECTED
+import com.fabiodrneles.listadetarefascompose.ui.theme.RADIO_BUTTON_RED_SELECTED
+import com.fabiodrneles.listadetarefascompose.ui.theme.RADIO_BUTTON_YELLOW_SELECTED
 import com.fabiodrneles.listadetarefascompose.ui.theme.ShapeCardPrioridade
 import com.fabiodrneles.listadetarefascompose.ui.theme.WHITE
 
 @Composable
-fun TarefaItem(){
+fun TarefaItem(
+    position: Int,
+    listaTarefas: MutableList<Tarefa>
+){
+    val tituloTarefa = listaTarefas[position].tarefa
+    val descricaoTarefa = listaTarefas[position].descricao
+    val prioridade = listaTarefas[position].prioridade
+
+    var nivelDePrioridade: String = when(prioridade){
+        0 -> {
+            "Sem prioridade"
+        }
+        1 -> {
+            "Prioridade Baixa"
+        }
+        2 -> {
+            "Prioridade Média"
+        }
+        else -> {
+            "Prioridade Alta"
+        }
+    }
+
+    val color = when(prioridade){
+        0 -> {
+            Color.Black
+        }
+        1 -> {
+            RADIO_BUTTON_GREEN_SELECTED
+        }
+        2 -> {
+            RADIO_BUTTON_YELLOW_SELECTED
+        }
+        else -> {
+            RADIO_BUTTON_RED_SELECTED
+        }
+
+    }
+
+
     Card (
         colors = CardDefaults.cardColors(
             containerColor = WHITE
@@ -37,7 +80,7 @@ fun TarefaItem(){
             val (txtTitulo, txtDescricao, cardPrioridade, txtPrioridade, btDeletar) = createRefs()
 
             Text(
-                text = "Tarefa 1",
+                text = tituloTarefa.toString(),
                 modifier = Modifier.constrainAs(txtTitulo){
                     top.linkTo(parent.top, margin = 10.dp)
                     start.linkTo(parent.start, margin = 10.dp)
@@ -45,7 +88,7 @@ fun TarefaItem(){
             )
 
             Text(
-                text = "shuahsuahusahusuashuashuahsuashua",
+                text = descricaoTarefa.toString(),
                 modifier = Modifier.constrainAs(txtDescricao){
                     top.linkTo(txtTitulo.bottom, margin = 10.dp)
                     start.linkTo(parent.start, margin = 10.dp)
@@ -53,7 +96,7 @@ fun TarefaItem(){
             )
 
             Text(
-                text = "Prioridade Baixa",
+                text = nivelDePrioridade,
                 modifier = Modifier.constrainAs(txtPrioridade){
                     top.linkTo(txtDescricao.bottom, margin = 10.dp)
                     start.linkTo(parent.start, margin = 10.dp)
@@ -63,7 +106,7 @@ fun TarefaItem(){
 
             Card (
                 colors = CardDefaults.cardColors(
-                    containerColor = Color.Green
+                    containerColor = color
                 ),
                 modifier = Modifier
                     .size(30.dp)
@@ -97,10 +140,4 @@ fun TarefaItem(){
 
     }
 
-}
-
-@Composable
-@Preview
-private fun TarefaItemPreview(){
-    TarefaItem()
 }
