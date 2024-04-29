@@ -2,8 +2,10 @@ package com.fabiodrneles.listadetarefascompose.view
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -14,6 +16,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -34,9 +38,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.fabiodrneles.listadetarefascompose.R
+import com.fabiodrneles.listadetarefascompose.componentes.Botao
 import com.fabiodrneles.listadetarefascompose.componentes.CaixaDeTexto
 import com.fabiodrneles.listadetarefascompose.ui.theme.BLACK
 import com.fabiodrneles.listadetarefascompose.ui.theme.Purple700
+import com.fabiodrneles.listadetarefascompose.ui.theme.RADIO_BUTTON_GREEN_DISABLED
+import com.fabiodrneles.listadetarefascompose.ui.theme.RADIO_BUTTON_GREEN_SELECTED
+import com.fabiodrneles.listadetarefascompose.ui.theme.RADIO_BUTTON_RED_DISABLED
+import com.fabiodrneles.listadetarefascompose.ui.theme.RADIO_BUTTON_RED_SELECTED
+import com.fabiodrneles.listadetarefascompose.ui.theme.RADIO_BUTTON_YELLOW_DISABLED
+import com.fabiodrneles.listadetarefascompose.ui.theme.RADIO_BUTTON_YELLOW_SELECTED
 import com.fabiodrneles.listadetarefascompose.ui.theme.WHITE
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -90,6 +101,22 @@ fun SalvarTarefa(
             mutableStateOf("")
         }
 
+        var semPrioridadeTarefa by remember {
+            mutableStateOf(false)
+        }
+
+        var prioridadeBaixaTarefa by remember {
+            mutableStateOf(false)
+        }
+
+        var prioridadeMediaTarefa by remember {
+            mutableStateOf(false)
+        }
+
+        var prioridadeAltaTarefa by remember {
+            mutableStateOf(false)
+        }
+
 
         Box (
             modifier = Modifier
@@ -122,11 +149,64 @@ fun SalvarTarefa(
                         descricaoTarefa = it
                     },
                     modifier = Modifier
-                        .fillMaxWidth().height(150.dp)
+                        .fillMaxWidth()
+                        .height(150.dp)
                         .padding(20.dp, 20.dp, 20.dp, 0.dp),
                     label = "Descrição",
                     maxLines = 5,
                     keyboardType = KeyboardType.Text
+                )
+
+                Row (verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier.fillMaxWidth()
+                ){
+                    Text(text = "Nível de Prioridade")
+                    
+                    
+                    RadioButton(
+                        selected = prioridadeBaixaTarefa,
+                        onClick = {
+                            prioridadeBaixaTarefa = !prioridadeBaixaTarefa
+                        },
+                        colors = RadioButtonDefaults.colors(
+                            unselectedColor = RADIO_BUTTON_GREEN_DISABLED,
+                            selectedColor = RADIO_BUTTON_GREEN_SELECTED
+                        )
+                    )
+
+
+                    RadioButton(
+                        selected = prioridadeMediaTarefa,
+                        onClick = {
+                            prioridadeMediaTarefa = !prioridadeMediaTarefa
+                        },
+                        colors = RadioButtonDefaults.colors(
+                            unselectedColor = RADIO_BUTTON_YELLOW_DISABLED,
+                            selectedColor = RADIO_BUTTON_YELLOW_SELECTED
+                        )
+                    )
+
+
+                    RadioButton(
+                        selected = prioridadeAltaTarefa,
+                        onClick = {
+                            prioridadeAltaTarefa = !prioridadeAltaTarefa
+                        },
+                        colors = RadioButtonDefaults.colors(
+                            unselectedColor = RADIO_BUTTON_RED_DISABLED,
+                            selectedColor = RADIO_BUTTON_RED_SELECTED
+                        )
+                    )
+
+                }
+
+                Botao(
+                    onClick = {
+
+                    },
+                    modifier = Modifier.fillMaxWidth().height(80.dp).padding(20.dp),
+                    texto = "Salvar"
                 )
 
             }

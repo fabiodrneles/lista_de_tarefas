@@ -33,7 +33,6 @@ fun CaixaDeTexto(
 
         colors = OutlinedTextFieldDefaults.colors( // Define as cores da caixa de texto
 
-
             // Cor da borda quando clicar na caixa
             focusedBorderColor = LIGHT_BLUE,
             // Cor da borda quando não clicar na caixa
@@ -55,3 +54,4 @@ fun CaixaDeTexto(
     )
 
 }
+
