@@ -41,7 +41,6 @@ fun ListaTarefas(
     Scaffold(
         topBar = {
             TopAppBar(
-
                 title = {
                     Text(
                         text = "Lista de Tarefas",
@@ -103,7 +102,9 @@ fun ListaTarefas(
 
         )
 
-        LazyColumn{
+        LazyColumn(
+            modifier = Modifier.padding(top = 65.dp)
+        ){
             itemsIndexed(listaTarefas){position, _ ->
                 TarefaItem(position, listaTarefas)
 
