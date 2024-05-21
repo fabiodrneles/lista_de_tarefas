@@ -2,7 +2,6 @@ package com.fabiodrneles.listadetarefascompose.componentes
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ListItemDefaults.contentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,4 +34,10 @@ fun Botao(
         )
 
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BotaoPreview(){
+    Botao(onClick = {}, modifier = Modifier, texto = "Adicionar")
 }

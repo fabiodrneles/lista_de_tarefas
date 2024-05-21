@@ -118,18 +118,18 @@ fun SalvarTarefa(
         }
 
 
-        Box (
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight(Alignment.CenterVertically)
                 .padding(start = 20.dp, top = 80.dp, end = 20.dp, bottom = 0.dp)
-        ){
+        ) {
 
-            Column (
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
-            ){
+            ) {
                 CaixaDeTexto(
                     value = tituloTarefa,
                     onValueChange = {
@@ -157,13 +157,14 @@ fun SalvarTarefa(
                     keyboardType = KeyboardType.Text
                 )
 
-                Row (verticalAlignment = Alignment.CenterVertically,
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center,
                     modifier = Modifier.fillMaxWidth()
-                ){
+                ) {
                     Text(text = "Nível de Prioridade")
-                    
-                    
+
+
                     RadioButton(
                         selected = prioridadeBaixaTarefa,
                         onClick = {
@@ -205,7 +206,10 @@ fun SalvarTarefa(
                     onClick = {
 
                     },
-                    modifier = Modifier.fillMaxWidth().height(80.dp).padding(20.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(80.dp)
+                        .padding(20.dp),
                     texto = "Salvar"
                 )
 
@@ -213,7 +217,6 @@ fun SalvarTarefa(
 
 
         }
-
 
 
     }
